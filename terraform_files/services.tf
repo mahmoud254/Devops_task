@@ -9,8 +9,8 @@ resource "kubernetes_service" "nexus" {
     }
     port {
       node_port   = 30001
-      port        = 8081
-      target_port = 8081
+      port        = "8081"
+      target_port = "8081"
     }
 
     type = "NodePort"
@@ -28,8 +28,8 @@ resource "kubernetes_service" "docker" {
     }
     port {
       node_port   = 30004
-      port        = 8123
-      target_port = 8123
+      port        = "${var.docker_nexus_port}"
+      target_port = "${var.docker_nexus_port}"
     }
 
     type = "NodePort"

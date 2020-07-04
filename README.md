@@ -1,5 +1,12 @@
 # DevOps Task
 
+# versions of tools used in this project
+* Terraform v0.11.14
+* minikube version: v1.11.0
+* Docker version 19.03.4
+* Darwin Kernel Version 17.7.0
+
+
 ## install and configure minikube
 ```
 brew install minikube
@@ -19,10 +26,10 @@ cd terraform_files
 terraform init
 ```
 ```
-terraform plan
+terraform plan -var-file="values.tfvars"
 ```
 ```
-terraform apply
+terraform apply  -var-file="values.tfvars"
 ```
 ## to check created resources
 ```

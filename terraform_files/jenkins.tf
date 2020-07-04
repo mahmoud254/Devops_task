@@ -1,29 +1,3 @@
-resource "kubernetes_pod" "nexus" {
-  metadata {
-    name = "nexus"
-    namespace= "${kubernetes_namespace.build.id}"
-    labels = {
-      app = "nexus"
-    }
-  }
-
-  spec {
-    container {
-      image = "sonatype/nexus3:latest"
-      name  = "nexus"
-      port {
-        container_port= "8123"
-      }
-      port {
-        container_port= "8081"
-      }
-    }
-  }
-
-}
-
-
-
 
 resource "kubernetes_pod" "jenkins" {
   metadata {
@@ -36,7 +10,7 @@ resource "kubernetes_pod" "jenkins" {
 
   spec {
     container {
-      image = "mahmom/myjenkins:v1.1"
+      image = "${var.jenkins_image}"
       name  = "jenkins"
 
       volume_mount{
@@ -75,4 +49,3 @@ resource "kubernetes_pod" "jenkins" {
   }
 
 }
-

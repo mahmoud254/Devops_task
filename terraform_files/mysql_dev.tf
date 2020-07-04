@@ -10,7 +10,7 @@ resource "kubernetes_pod" "mysql_dev" {
 
   spec {
     container {
-      image = "mahmom/mysql:v1.2"
+      image = "${var.mysql_image}"
       name  = "mysql"
 
     }

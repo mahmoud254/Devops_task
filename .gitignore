@@ -1,0 +1,3 @@
+terraform_files/terraform.tfstate*
+terraform_files/.terraform
+
