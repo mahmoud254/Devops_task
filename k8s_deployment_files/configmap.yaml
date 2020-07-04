@@ -4,6 +4,6 @@ metadata:
   name: spring
   # namespace: dev
 data:
-    dbName: mysql.dev.svc.cluster.local:3306
+    dbName: jdbc:mysql://mysql.dev.svc.cluster.local:3306
     userName: root
     password: "12345"
