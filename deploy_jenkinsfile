@@ -1,6 +1,22 @@
 node {
+
+    stage('preparations'){
+        checkout([$class: 'GitSCM', 
+    branches: [[name: 'master']],
+    doGenerateSubmoduleConfigurations: false,
+    extensions: [
+        [$class: 'SparseCheckoutPaths',  sparseCheckoutPaths:[[$class:'SparseCheckoutPath', path:'k8s_deployment_files']]]
+                ],
+    submoduleCfg: [],
+    userRemoteConfigs: [[url: 'https://github.com/mahmoud254/Devops_task.git']]])
+
+    }
     stage('deploy') {
-         
-            sh "ansible-playbook --extra-vars "env=${params.env}"    
+            def env= params.env
+            sh """
+            cd k8s_deployment_files
+            ansible-playbook --extra-vars "env=${env}"  ansible_playbook.yaml
+            
+            """
     }
 } 
