@@ -60,7 +60,7 @@ resource "kubernetes_service" "jenkins" {
 
 resource "kubernetes_service" "mysql_dev" {
   metadata {
-    name = "mysqldev"
+    name = "mysql"
     namespace = "dev"
   }
   spec {
@@ -80,8 +80,8 @@ resource "kubernetes_service" "mysql_dev" {
 
 resource "kubernetes_service" "mysql_test" {
   metadata {
-    name = "mysqltest"
-    namespace = "dev"
+    name = "mysql"
+    namespace = "test"
   }
   spec {
     selector = {
