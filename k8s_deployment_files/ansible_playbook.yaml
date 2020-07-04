@@ -1,6 +1,4 @@
-
 - hosts: localhost
   tasks:
   - name: create config map
     shell: kubectl apply -f . -n {{ env }} --validate=false
-
