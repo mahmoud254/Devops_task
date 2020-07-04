@@ -79,7 +79,7 @@ create user and password
 
 ## to create build pipeline
 * First configure maven tool in configure system tools
-* Create nexus credential with id Nexus
+* Create nexus credential with id mysql
 * Create pipeline 
 * Choose This project is parameterized
 * Add string parameter COMMIT_ID
