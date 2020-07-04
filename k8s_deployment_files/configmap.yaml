@@ -2,7 +2,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: spring
-  namespace: dev
+  # namespace: dev
 data:
     dbName=mysql
     userName=root

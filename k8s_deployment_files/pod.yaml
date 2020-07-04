@@ -2,7 +2,7 @@ apiVersion: v1
 kind: Pod
 metadata:
   name: spring
-  namespace: dev
+  # namespace: dev
   labels:
     app: spring
 

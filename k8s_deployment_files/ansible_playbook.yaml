@@ -2,5 +2,5 @@
 - hosts: localhost
   tasks:
   - name: create config map
-    shell: kubectl apply -f k8s_deployment_files
+    shell: kubectl apply -f k8s_deployment_files -n {{ env }}
 

@@ -1,14 +1,6 @@
 node {
     stage('deploy') {
-        if (params.env.equals('dev')){ 
-            configFileProvider([configFile(fileId: 'spring-dev', variable: 'spring_dev')]) {
-            sh "ansible-playbook $spring_dev"
-            }
-        }
-         if (params.env.equals('test')){ 
-            configFileProvider([configFile(fileId: 'spring-test', variable: 'spring_test')]) {
-            sh "ansible-playbook $spring_test"
-            }
-        }       
+         
+            sh "ansible-playbook --extra-vars "env=${params.env}"    
     }
 } 
