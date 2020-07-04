@@ -12,11 +12,16 @@ node {
 
     }
     stage('deploy') {
+        withCredentials([usernamePassword(credentialsId: 'mysql', passwordVariable: 'password',usernameVariable: 'username')]) {
             def env= params.env
             sh """
             cd k8s_deployment_files
+            sed -i s/env/${env}/ configmap.yaml
+            sed -i s/UN/${username}/ configmap.yaml
+            sed -i s/PW/${password}/ configmap.yaml
             ansible-playbook --extra-vars "env=${env}"  ansible_playbook.yaml
             
             """
+        }
     }
 } 

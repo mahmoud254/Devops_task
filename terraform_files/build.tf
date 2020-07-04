@@ -38,7 +38,7 @@ resource "kubernetes_pod" "jenkins" {
       name  = "jenkins"
 
       volume_mount{
-            mount_path = "/var/run/docker"
+            mount_path = "/var/run"
             name = "docker-sock"
       }
       volume_mount{
@@ -54,7 +54,7 @@ resource "kubernetes_pod" "jenkins" {
     volume{
       name = "docker-sock"
         host_path{
-          path = "/var/run/docker"
+          path = "/var/run"
         }
     }
       volume{
