@@ -9,7 +9,7 @@ metadata:
 spec:
   containers:
   - name: spring
-    image: mahmom/gs-spring-boot-docker:v1.0 
+    image: localhost:30004/gs-spring-boot-docker:v1.0 
     ports:
     - containerPort: 8080
     env:

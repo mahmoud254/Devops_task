@@ -23,9 +23,9 @@ node {
                 
                 writeFile file: 'Dockerfile', text: 'FROM openjdk:8-jdk-alpine\nARG JAR_FILE=Toy0Store/target/*.jar\nCOPY ${JAR_FILE} app.jar\nENTRYPOINT ["java","-jar","/app.jar"]'
                 sh """
-                   docker build . -t "mahmom/gs-spring-boot-docker:v1.0"
-                   docker login --username $USERNAME --password $PASSWORD
-                   docker push "mahmom/gs-spring-boot-docker:v1.0"
+                   docker build . -t "localhost:30004/gs-spring-boot-docker:v1.0"
+                   docker login --username $USERNAME --password $PASSWORD localhost:30004
+                   docker push "localhost:30004/gs-spring-boot-docker:v1.0"
                """
                    
               
