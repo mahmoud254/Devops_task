@@ -95,7 +95,7 @@ create user and password
 
 
 ## to create deploy pipeline
-* Create mysql credential with id Nexus
+* Create mysql credential with id mysql
 * Create pipeline 
 * Choose This project is parameterized
 * Add choice parameter and add dev and test
