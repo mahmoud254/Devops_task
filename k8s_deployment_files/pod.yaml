@@ -11,7 +11,7 @@ spec:
   - name: spring
     image: mahmom/gs-spring-boot-docker:v1.0 
     ports:
-    - containerPort: 3306
+    - containerPort: 8080
     env:
     - name: MY_SQL_DB_NAME
       valueFrom:
