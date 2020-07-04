@@ -6,4 +6,4 @@ metadata:
 data:
     dbName: jdbc:mysql://mysql.env.svc.cluster.local:3306/toystore
     userName: UN
-    password: PW
+    password: "PW"

@@ -5,7 +5,7 @@ node {
         userRemoteConfigs: [[url: 'https://github.com/ahmedmisbah-ole/Devops-Orange']]])
         mvnHome = tool 'm3'
     }
-    stage('Build') {
+    stage('Build maven project') {
         // Run the maven build
         withEnv(["MVN_HOME=$mvnHome"]) {
                 writeFile file: 'Toy0Store/src/main/resources/application.properties', text: 'spring.datasource.url=${MY_SQL_DB_NAME}\nspring.datasource.username=${MY_SQL_user_NAME}\nspring.datasource.password=${MY_SQL_password}\nspring.jpa.hibernate.naming.implicit-strategy=org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyJpaImpl\nspring.jpa.hibernate.naming.physical-strategy=org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl'
@@ -17,15 +17,15 @@ node {
 
         }
     }
-    stage('build docker image') {
+    stage('build and push docker image') {
         
             withCredentials([usernamePassword(credentialsId: 'Nexus', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
                 
                 writeFile file: 'Dockerfile', text: 'FROM openjdk:8-jdk-alpine\nARG JAR_FILE=Toy0Store/target/*.jar\nCOPY ${JAR_FILE} app.jar\nENTRYPOINT ["java","-jar","/app.jar"]'
                 sh """
-                   docker build . -t "nexus:8081/gs-spring-boot-docker:v1.0"
-                   docker login --username $USERNAME --password $PASSWORD nexus:8081
-                   docker push "nexus:8081/gs-spring-boot-docker:v1.0"
+                   docker build . -t "mahmom/gs-spring-boot-docker:v1.0"
+                   docker login --username $USERNAME --password $PASSWORD
+                   docker push "mahmom/gs-spring-boot-docker:v1.0"
                """
                    
               

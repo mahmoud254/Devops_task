@@ -11,10 +11,12 @@ resource "kubernetes_pod" "nexus" {
     container {
       image = "sonatype/nexus3:latest"
       name  = "nexus"
-      # port {
-      #   container_port= "8123"
-      # }
-
+      port {
+        container_port= "8123"
+      }
+      port {
+        container_port= "8081"
+      }
     }
   }
 
